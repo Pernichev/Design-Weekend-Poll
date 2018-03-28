@@ -20,7 +20,7 @@ class CreateOptionsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('options', function ($table){
+        Schema::table('options', function (Blueprint $table){
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });
     }

@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Session;
 
 class PollController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,6 +39,7 @@ class PollController extends Controller
 
     public function vote(Request $request, $q_id)
     {
+
         $this->validate($request, array(
             'choice' => 'required'
         ));

@@ -7,10 +7,17 @@ use App\Question;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class QuestionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +25,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
+
         $questions = Question::all();
         return view('questions.index')->with('questions', $questions);
     }
@@ -27,11 +35,14 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
+
     {
+
+        $request->user()->authorizeRoles(['admin']);
+
         return view('questions.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -60,8 +71,10 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
+        $request->user()->authorizeRoles(['user','admin']);
+
         $question = Question::find($id);
         $options = Option::all();
         return view('questions.show')->with('question', $question)->with('options', $options);
@@ -90,8 +103,10 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
+
         $question = Question::find($id);
         return view('questions.edit')->with('question', $question);
     }
@@ -105,6 +120,8 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
+
         $question = Question::find($id);
 
         $this->validate($request, array(
@@ -125,8 +142,10 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
+
         $question = Question::find($id);
 
         $question->delete();

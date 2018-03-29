@@ -6,6 +6,7 @@ use Closure;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class isAdmin
 {
@@ -18,8 +19,12 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $request->user()->authorizeRoles(['admin']);
-
-        return $next($request);
+        if(Auth::User()){
+            if ($request->user()->hasrole('admin')) {
+                return $next($request);
+            } else
+            return redirect('/');
+      } else
+          return redirect('/login');
     }
 }

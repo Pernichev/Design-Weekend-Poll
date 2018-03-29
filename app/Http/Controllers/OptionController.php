@@ -15,6 +15,7 @@ class OptionController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin');
 
     }
 
@@ -46,8 +47,6 @@ class OptionController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $request->user()->authorizeRoles(['admin']);
-
         $option = new Option;
 
         $this->validate($request, array(
@@ -75,10 +74,8 @@ class OptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, $q_id, Request $request)
+    public function edit($id, $q_id)
     {
-        $request->user()->authorizeRoles(['admin']);
-
         $option = Option::find($id);
         $question = Question::find($q_id);
         return view('options.edit')->with('option', $option)->with('question', $question);
@@ -93,8 +90,6 @@ class OptionController extends Controller
      */
     public function update(Request $request, $id, $q_id)
     {
-        $request->user()->authorizeRoles(['admin']);
-
         $option = Option::find($id);
 
         $this->validate($request, array(
@@ -115,9 +110,8 @@ class OptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $q_id, Request $request)
+    public function destroy($id, $q_id)
     {
-        $request->user()->authorizeRoles(['admin']);
 
         $option = Option::find($id);
 

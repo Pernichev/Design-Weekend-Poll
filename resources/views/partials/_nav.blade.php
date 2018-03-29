@@ -57,7 +57,11 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                 <li class={{ Request::is('/') ? "active" : "" }}><a href="/">Take Survey <span class="sr-only">(current)</span></a></li>
+                    @if(Auth::user())
+                        @if( Auth::user()->hasrole('admin'))
                 <li class={{ Request::is('question') ? "active" : "" }}><a href="{{ route('question.index') }}">Manage Survey</a></li>
+                        @endif
+                    @endif
                 </ul>
             </ul>
 

@@ -27,7 +27,7 @@ Route::resource('question', 'QuestionController');
 
 Route::get('question/{question_id}/result', ['as' => 'question.result', 'uses' => 'QuestionController@results']);
 
-Route::post('option/{question_id}', ['as' => 'option.store', 'uses' => 'OptionController@store']);
+Route::post('option/{question_id}', ['as' => 'option.store', 'uses' => 'OptionController@store'])->middleware('admin');
 
 Route::get('option/{option_id}/edit/{question_id}', ['as' => 'option.edit', 'uses' => 'OptionController@edit']);
 
@@ -38,5 +38,3 @@ Route::delete('option/{option_id}/{question_id}', ['as' => 'option.destroy', 'us
 Route::post('poll/{question_id}', ['as' => 'poll.vote', 'uses' => 'PollController@vote']);
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');

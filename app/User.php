@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function votes() {
+
+        return $this->belongsTo()
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class);
@@ -60,6 +65,7 @@ class User extends Authenticatable
      */
     public function hasRole($role)
     {
+
         return null !== $this->roles()->where('name', $role)->first();
 }
 }

@@ -27,11 +27,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function votes() {
-
-        return $this->belongsTo()
-    }
-
     public function roles()
     {
         return $this->belongsToMany(Role::class);

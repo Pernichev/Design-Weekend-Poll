@@ -6,8 +6,8 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <strong>Manage Poll Questions</strong>
-            <a href="{{ route('question.create') }}" class="btn btn-primary pull-right">Create a Question</a>
+            <strong>Управление на анкети</strong>
+            <a href="{{ route('question.create') }}" class="btn btn-primary pull-right">Създай анкета</a>
             <hr>
 
             <ol>

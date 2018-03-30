@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="bg-bg">
 
     <head>
         @include('partials._head')
     </head>
 
     <body>
-
         @include('partials._nav')
 
         <div class="container">

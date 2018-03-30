@@ -54,9 +54,9 @@ class PollController extends Controller
         $option->votes_count += 1;
         $option->save();
 
-        Session::flash('success', 'Poll successfully registered');
+        Session::flash('success', 'Гласувахте успешно!');
 
-        return redirect()->route('poll.show', $q_id);
+        return redirect()->route('question.result', $q_id);
     }
 
     /**

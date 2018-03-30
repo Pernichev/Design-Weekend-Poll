@@ -6,9 +6,10 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            Manage this question | <strong>{{ $question->question }}</strong>
+            <strong>{{ $question->question }}</strong>
             <a href="{{ route('question.edit', $question->id) }}" class="btn btn-primary pull-right">Edit Question</a>
-            <hr>
+            <br/>
+            <br/>
             {{ Form::open(['route' => ['option.store', $question->id], 'method' => 'POST']) }}
 
                 {{ Form::label('description', 'Option:') }}

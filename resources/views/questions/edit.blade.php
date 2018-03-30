@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3 white">
             <h1>Edit Question</h1>
             <hr>
 

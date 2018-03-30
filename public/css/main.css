@@ -72,7 +72,6 @@ body {
   -webkit-text-stroke: 0.5px black;
 }
 
-
 /*end nav*/
 
 /*Radio buttons*/
@@ -98,6 +97,24 @@ footer{
   grid-auto-flow: row;
   grid-column-gap: 1.5vw;
 }
+
+/*login/reg panels*/
+
+.panel-default{
+  border:none;
+}
+
+.panel-heading{
+  background-color:#227ed6 !important;
+  border:none;
+  border:none;
+}
+
+.panel-body{
+  background-color:#227ed6 !important;
+}
+
+/*end login/reg*/
 /* Header */
 /*SPANS*/
 .span2-8{

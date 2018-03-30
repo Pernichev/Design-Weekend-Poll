@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2 white">
             <strong>{{ $question->question }}</strong>
             <a href="{{ route('question.edit', $question->id) }}" class="btn btn-primary pull-right">Edit Question</a>
             <br/>

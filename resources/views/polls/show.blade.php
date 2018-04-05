@@ -19,7 +19,7 @@
                 </p>
             @endforeach
 
-                {{ Form::submit('Submit', ['class' => 'btn btn-success', 'style' => 'margin-top:15px; background-color:white; color:#227ed6; border:none;']) }}
+                {{ Form::submit('Изпрати', ['class' => 'btn btn-success', 'style' => 'margin-top:15px; background-color:white; color:#227ed6; border:none;']) }}
 
             {{ Form::close() }}
 

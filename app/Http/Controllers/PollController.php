@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Option;
 use App\Question;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class PollController extends Controller
 {
@@ -51,11 +53,20 @@ class PollController extends Controller
                 ['question_id', '=', $q_id],
             ])->first();
 
-        $option->votes_count += 1;
-        $option->save();
+        $user = Auth::id();
 
-        Session::flash('success', 'Гласувахте успешно!');
+        $votes = DB::table('users')->select('vote_count')->where('id','=',$user)->first();
 
+        if($votes->vote_count<3) {
+            $option->votes_count += 1;
+            $option->save();
+
+            DB::table('users')->where('id', '=', $user)->increment('vote_count');
+
+            Session::flash('success', 'Гласувахте успешно!');
+        }else {
+            Session::flash('danger', 'Не може да гласувате повече от 3 пъти :(');
+        }
         return redirect()->route('question.result', $q_id);
     }
 

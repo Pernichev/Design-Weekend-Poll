@@ -52,7 +52,7 @@ class QuestionController extends Controller
         $question = new Question;
 
         $this->validate($request, array(
-            'question' => 'required | max:500 | min:20'
+            'question' => 'required | max:500 | min:5'
         ));
 
         $question->question = $request->input('question');
@@ -117,7 +117,7 @@ class QuestionController extends Controller
         $question = Question::find($id);
 
         $this->validate($request, array(
-            'question' => 'required | max:500 | min:20'
+            'question' => 'required | max:500 | min:5'
         ));
 
         $question->question = $request->input('question');

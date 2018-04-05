@@ -22,7 +22,7 @@
                 @else
                     <p class="white">
                         <span><strong>{{ $option->description }}</strong></span>
-                        <div style="height: 20px; margin-bottom: 10px; width: {{ ($option->votes_count/$sum) * 100 * 10}}px; background-color: green;"></div>
+                        <div style="height: 20px; margin-bottom: 10px; width: {{ ($option->votes_count/$sum) * 100 * 10}}px; background-color: #d6e9c6;"></div>
                     <span class="white">{{ number_format(($option->votes_count/$sum) * 100, 1) }}%</span> <span class="white">|</span>
                         <span class="white">{{ $option->votes_count }}{{ $option->votes_count > 1 ? " гласа" : " глас" }}</span>
                     </p>
